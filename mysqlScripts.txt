@@ -1,0 +1,43 @@
+CREATE TABLE `sgcore`.`service` (
+  `service_id` INT NOT NULL AUTO_INCREMENT,
+  `service_name` VARCHAR(45) NOT NULL,
+  `service_image` mediumblob NOT NULL,
+  `service_discription` VARCHAR(250) NOT NULL,
+  `service_show` VARCHAR(1) NOT NULL,
+  PRIMARY KEY (`service_id`));
+
+
+
+CREATE TABLE `products` (
+  `product_id` int NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(100) NOT NULL,
+  `product_discription` varchar(500) NOT NULL,
+  `product_image` mediumblob NOT NULL,
+  `product_show` varchar(45) NOT NULL,
+  PRIMARY KEY (`product_id`),
+  UNIQUE KEY `product_id_UNIQUE` (`product_id`)
+);
+
+
+CREATE TABLE `portfolio` (
+  `portfolio_id` int NOT NULL AUTO_INCREMENT,
+  `portfolio_name` varchar(45) NOT NULL,
+  `portfolio_discription` varchar(500) NOT NULL,
+  `portfolio_image` mediumblob NOT NULL,
+  `portfolio_show` varchar(1) NOT NULL,
+  PRIMARY KEY (`portfoliot_id`),
+  UNIQUE KEY `portfoliot_id_UNIQUE` (`portfoliot_id`)
+)
+
+
+
+CREATE TABLE `sgcore`.`subservices` (
+    subservice_id INT AUTO_INCREMENT PRIMARY KEY,
+    subservice_name VARCHAR(255) NOT NULL,
+    subservice_image MEDIUMBLOB NOT NULL,
+    subservice_description TEXT NOT NULL,
+    subservice_cost DECIMAL(10,2) NOT NULL,
+    service_id INT,
+    FOREIGN KEY (service_id) REFERENCES services(service_id) ON DELETE CASCADE
+);
+
