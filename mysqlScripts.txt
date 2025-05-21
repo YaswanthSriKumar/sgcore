@@ -41,3 +41,16 @@ CREATE TABLE `sgcore`.`subservices` (
     FOREIGN KEY (service_id) REFERENCES services(service_id) ON DELETE CASCADE
 );
 
+CREATE TABLE `sgcore`.`sector` (
+  `sector_id` INT NOT NULL AUTO_INCREMENT,
+  `sector_name` VARCHAR(100) NOT NULL,
+  `sector_image` MEDIUMBLOB NOT NULL,
+  PRIMARY KEY (`sector_id`));
+
+
+
+ALTER TABLE sgcore.portfolio
+ADD CONSTRAINT fk_portfolio_sector
+FOREIGN KEY (sector_id) REFERENCES sgcore.sector(sector_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
